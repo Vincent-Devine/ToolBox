@@ -6,7 +6,7 @@
 
 namespace UnitTest
 {
-	const bool TestUnitOperator()
+	const bool TestUnitOperatorVector2()
 	{
 		// Operator +
 		if ((Math::Vector2(1.f, 1.f) + Math::Vector2(1.f, 1.f)) != Math::Vector2(2.f, 2.f))
@@ -37,7 +37,7 @@ namespace UnitTest
 		}
 
 		// Operator +=
-		Math::Vector2 vector2 = Math::Vector2<float>(1.f, 1.f);
+		Math::Vector2 vector2 = Math::Vector2(1.f, 1.f);
 		vector2 += Math::Vector2(1.f, 1.f);
 		if (vector2 != Math::Vector2(2.f, 2.f))
 		{
@@ -46,7 +46,7 @@ namespace UnitTest
 		}
 
 		// Operator -=
-		vector2 = Math::Vector2<float>(1.f, 1.f);
+		vector2 = Math::Vector2(1.f, 1.f);
 		vector2 -= Math::Vector2(1.f, 1.f);
 		if (vector2 != Math::Vector2(0.f, 0.f))
 		{
@@ -55,7 +55,7 @@ namespace UnitTest
 		}
 
 		// Operator *=
-		vector2 = Math::Vector2<float>(1.f, 1.f);
+		vector2 = Math::Vector2(1.f, 1.f);
 		vector2 *= 2.f;
 		if (vector2 != Math::Vector2(2.f, 2.f))
 		{
@@ -64,7 +64,7 @@ namespace UnitTest
 		}
 
 		// Operator /=
-		vector2 = Math::Vector2<float>(2.f, 2.f);
+		vector2 = Math::Vector2(2.f, 2.f);
 		vector2 /= 2.f;
 		if (vector2 != Math::Vector2(1.f, 1.f))
 		{
@@ -75,14 +75,14 @@ namespace UnitTest
 		return true;
 	}
 
-	const bool TestUnitDotProduct()
+	const bool TestUnitDotProductVector2()
 	{
-		Math::Vector2<float> v1(1.f, 4.f);
-		Math::Vector2<float> v2(2.f, 3.f);
+		Math::Vector2 v1(1.f, 4.f);
+		Math::Vector2 v2(2.f, 3.f);
 		glm::vec2 v3(1.f, 4.f);
 		glm::vec2 v4(2.f, 3.f);
 
-		const float myResult = v1.DotProduct(v2);
+		const float myResult = Math::Vector2::DotProduct(v1, v2);
 		const float resultWanted = glm::dot(v3, v4);
 
 		if (myResult != resultWanted)
@@ -94,12 +94,12 @@ namespace UnitTest
 		return true;
 	}
 
-	const bool TestUnitMagnitude()
+	const bool TestUnitMagnitudeVector2()
 	{
-		Math::Vector2<float> v1(1.f, 4.f);
+		Math::Vector2 v1(1.f, 4.f);
 		glm::vec2 v2(1.f, 4.f);
 
-		const float myResult = v1.Magnitude();
+		const float myResult = Math::Vector2::Magnitude(v1);
 		const float resultWanted = glm::length(v2);
 
 		if (myResult != resultWanted)
@@ -111,29 +111,12 @@ namespace UnitTest
 		return true;
 	}
 
-	const bool TestUnitCrossProduct()
+	const bool TestUnitNormalizeVector2()
 	{
-		Math::Vector2<float> v1(5.f, 4.f);
-		Math::Vector2<float> v2(2.f, 3.f);
-
-		const float myResult = v1.CrossProduct(v2);
-		const float resultWanted = 7.f;
-
-		if (myResult != resultWanted)
-		{
-			std::cout << "Fail on Math::Vector2::CrossProduct" << std::endl;
-			return false;
-		}
-
-		return true;
-	}
-
-	const bool TestUnitNormalize()
-	{
-		Math::Vector2<float> v1(1.f, 4.f);
+		Math::Vector2 v1(1.f, 4.f);
 		glm::vec2 v2(1.f, 4.f);
 
-		const Math::Vector2 myResult = v1.Normalize();
+		const Math::Vector2 myResult = Math::Vector2::Normalize(v1);
 		const glm::vec2 resultWanted = glm::normalize(v2);
 
 		if (myResult.x != resultWanted.x && myResult.y != resultWanted.y)
@@ -144,15 +127,18 @@ namespace UnitTest
 
 		return true;
 	}
-
+	
 	const bool TestVector2()
 	{
-		if(TestUnitOperator() &&
-			TestUnitDotProduct() && 
-			TestUnitMagnitude() && 
-			TestUnitCrossProduct() &&
-			TestUnitNormalize())
+		if(TestUnitOperatorVector2() &&
+			TestUnitDotProductVector2() &&
+			TestUnitMagnitudeVector2() &&
+			TestUnitNormalizeVector2())
+		{
+			std::cout << "Vector2 : OK" << std::endl;
 			return true;
+		}
+		std::cout << "Vector2 : Fail" << std::endl;
 		return false;
 	}
 }
