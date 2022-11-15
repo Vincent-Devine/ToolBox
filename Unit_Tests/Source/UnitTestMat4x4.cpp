@@ -6,23 +6,23 @@
 
 namespace UnitTest
 {
-    Math::Mat4x4<float> GlmMatToMat(const glm::mat4x4& mat)
+    Math::Mat4x4 GlmMatToMat(const glm::mat4x4& mat)
     {
-        return Math::Mat4x4<float>(
+        return Math::Mat4x4(
             mat[0][0], mat[1][0], mat[2][0], mat[3][0],
             mat[0][1], mat[1][1], mat[2][1], mat[3][1],
             mat[0][2], mat[1][2], mat[2][2], mat[3][2],
             mat[0][3], mat[1][3], mat[2][3], mat[3][3]);
     }
 
-    Math::Vector4<float> GlmVecToVec(const glm::vec4& vec)
+    Math::Vector4 GlmVecToVec(const glm::vec4& vec)
     {
-        return Math::Vector4<float>(vec.x, vec.y, vec.z, vec.w);
+        return Math::Vector4(vec.x, vec.y, vec.z, vec.w);
     }
 
-    Math::Vector3<float> GlmVecToVec(const glm::vec3& vec)
+    Math::Vector3 GlmVecToVec(const glm::vec3& vec)
     {
-        return Math::Vector3<float>(vec.x, vec.y, vec.z);
+        return Math::Vector3(vec.x, vec.y, vec.z);
     }
 
     bool TestOperatorMat4x4()
@@ -71,7 +71,7 @@ namespace UnitTest
         glm::mat4 mat(1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f, 8.f, 9.f, 10.f, 11.f, 12.f, 13.f, 14.f, 15.f, 16.f);
         glm::vec3 vec(1.f, 2.f, 3.f);
 
-        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4<float>::CreateTranslationMatrix(GlmVecToVec(vec));
+        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4::CreateTranslationMatrix(GlmVecToVec(vec));
         Math::Mat4x4 glmResult = GlmMatToMat(glm::translate(mat, vec));
 
         if(myResult != glmResult)
@@ -87,7 +87,7 @@ namespace UnitTest
     {
         glm::mat4 mat(1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f, 8.f, 9.f, 10.f, 11.f, 12.f, 13.f, 14.f, 15.f, 16.f);
 
-        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4<float>::CreateXRotationMatrix(90.f);
+        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4::CreateXRotationMatrix(90.f);
         Math::Mat4x4 glmResult = GlmMatToMat(glm::rotate(mat, glm::radians(90.f), { 1.f, 0.f, 0.f }));
 
         if (myResult != glmResult)
@@ -103,7 +103,7 @@ namespace UnitTest
     {
         glm::mat4 mat(1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f, 8.f, 9.f, 10.f, 11.f, 12.f, 13.f, 14.f, 15.f, 16.f);
 
-        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4<float>::CreateYRotationMatrix(90.f);
+        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4::CreateYRotationMatrix(90.f);
         Math::Mat4x4 glmResult = GlmMatToMat(glm::rotate(mat, glm::radians(90.f), { 0.f, 1.f, 0.f }));
 
         if (myResult != glmResult)
@@ -119,7 +119,7 @@ namespace UnitTest
     {
         glm::mat4 mat(1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f, 8.f, 9.f, 10.f, 11.f, 12.f, 13.f, 14.f, 15.f, 16.f);
 
-        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4<float>::CreateZRotationMatrix(90.f);
+        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4::CreateZRotationMatrix(90.f);
         Math::Mat4x4 glmResult = GlmMatToMat(glm::rotate(mat, glm::radians(90.f), { 0.f, 0.f, 1.f }));
 
         if (myResult != glmResult)
@@ -136,7 +136,7 @@ namespace UnitTest
         glm::mat4 mat(1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f, 8.f, 9.f, 10.f, 11.f, 12.f, 13.f, 14.f, 15.f, 16.f);
         glm::vec3 scale(1.f, 2.f, 3.f);
 
-        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4<float>::CreateScaleMatrix(GlmVecToVec(scale));
+        Math::Mat4x4 myResult = GlmMatToMat(mat) * Math::Mat4x4::CreateScaleMatrix(GlmVecToVec(scale));
         Math::Mat4x4 glmResult = GlmMatToMat(glm::scale(mat, scale));
 
         if (myResult != glmResult)
