@@ -3,8 +3,6 @@
 #include <cmath>
 #include <corecrt_math_defines.h>
 
-#include "Utils.hpp"
-
 namespace Math
 {
 	template<typename T = float>

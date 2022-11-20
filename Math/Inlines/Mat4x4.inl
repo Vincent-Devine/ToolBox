@@ -5,8 +5,6 @@
 #include <string>
 #include <iostream>
 
-#include "Mat4x4.hpp"
-
 namespace Math
 {
 	inline Mat4x4::Mat4x4(const float p_value)

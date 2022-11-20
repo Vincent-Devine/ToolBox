@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-#include "Vector2.hpp"
-
 namespace Math
 {
     inline Vector2::Vector2(const float p_x, const float p_y)

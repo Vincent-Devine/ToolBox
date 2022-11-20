@@ -60,4 +60,4 @@ namespace Math
 	};
 }
 
-#include "Vector3.inl"
+#include "../Inlines/Vector3.inl"

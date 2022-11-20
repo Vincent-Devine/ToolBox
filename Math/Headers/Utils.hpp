@@ -24,4 +24,4 @@ namespace Math
 	T Clamp(const T value, const T min, const T max);
 }
 
-#include "Utils.inl"
+#include "../Inlines/Utils.inl"

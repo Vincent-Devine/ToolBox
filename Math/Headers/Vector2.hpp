@@ -51,4 +51,4 @@ namespace Math
         friend bool operator>=(const Vector2& p_left, const Vector2& p_right);
     };
 }
-#include "Vector2.inl"
+#include "../Inlines/Vector2.inl"
